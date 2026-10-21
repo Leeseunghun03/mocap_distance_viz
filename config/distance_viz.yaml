@@ -1,0 +1,18 @@
+# Rigid bodies to track. Topic = <name>/<topic_suffix>, matching mocap_optitrack config
+#   msg_type 'pose' -> geometry_msgs/PoseStamped on <name>/pose  (default suffix 'pose')
+#   msg_type 'odom' -> nav_msgs/Odometry    on <name>/Odom  (default suffix 'Odom')
+rigid_bodies: ["Robot_1"]
+msg_type: "pose"
+topic_suffix: ""          # empty -> 'pose' or 'Odom' depending on msg_type
+planar: false             # true -> xy distance only (ignore z)
+min_step: 0.005           # [m] movement below this is treated as mocap jitter
+max_step: 0.5             # [m] larger jump between samples is ignored (tracking loss), <=0 disables
+max_path_length: 20000    # poses kept in <name>/path, <=0 unlimited
+publish_rate: 10.0        # [Hz] distance / displacement / markers
+path_publish_rate: 2.0    # [Hz] <name>/path
+display: "auto"           # terminal output: auto (live if TTY, else log) | live | log | off
+display_rate: 5.0         # [Hz] live dashboard refresh
+log_period: 1.0           # [s] one-line summary in log mode, <=0 disables
+stale_timeout: 0.5        # [s] no sample for this long -> shown as "lost"
+text_height: 0.12         # [m]
+text_offset_z: 0.35       # [m]

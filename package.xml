@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>mocap_distance_viz</name>
+  <version>1.0.0</version>
+  <description>
+    Visualizes the travelled distance of OptiTrack rigid bodies published by
+    mocap_optitrack (geometry_msgs/PoseStamped or nav_msgs/Odometry).
+    Publishes cumulative distance, displacement from start, path and RViz markers.
+  </description>
+  <maintainer email="lsh12070420@gmail.com">lsh12070420@gmail.com</maintainer>
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>std_srvs</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend>
+  <exec_depend>rviz</exec_depend>
+
+  <test_depend>rosunit</test_depend>
+  <test_depend>rostest</test_depend>
+</package>
