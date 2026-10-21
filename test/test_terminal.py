@@ -1,15 +1,11 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from __future__ import division
 
 import io
 import os
-import sys
 import unittest
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'src'))
-
-from mocap_distance_viz.terminal import BodyRow, Dashboard, summary_line  # noqa: E402
+from mocap_distance_viz.terminal import BodyRow, Dashboard, summary_line
 
 BLUE = (0.1, 0.6, 1.0)
 

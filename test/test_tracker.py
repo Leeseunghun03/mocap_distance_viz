@@ -1,14 +1,9 @@
-#!/usr/bin/env python3
 from __future__ import division
 
-import os
 import random
-import sys
 import unittest
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'src'))
-
-from mocap_distance_viz.tracker import BodyTracker  # noqa: E402
+from mocap_distance_viz.tracker import BodyTracker
 
 
 def feed(tr, pts):

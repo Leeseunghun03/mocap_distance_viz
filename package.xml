@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<package format="2">
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
   <name>mocap_distance_viz</name>
   <version>1.0.0</version>
   <description>
@@ -10,16 +11,19 @@
   <maintainer email="lsh12070420@gmail.com">lsh12070420@gmail.com</maintainer>
   <license>BSD</license>
 
-  <buildtool_depend>catkin</buildtool_depend>
-
-  <exec_depend>rospy</exec_depend>
+  <exec_depend>rclpy</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>nav_msgs</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>std_srvs</exec_depend>
   <exec_depend>visualization_msgs</exec_depend>
-  <exec_depend>rviz</exec_depend>
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>rviz2</exec_depend>
 
-  <test_depend>rosunit</test_depend>
-  <test_depend>rostest</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
 </package>

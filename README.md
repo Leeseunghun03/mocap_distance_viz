@@ -13,7 +13,7 @@ The results are shown in the terminal running the node and, optionally, in RViz.
 
 ### Input
 
-Topics published by [mocap_optitrack](https://github.com/ros-drivers/mocap_optitrack) (`master` branch).
+Topics published by [mocap_optitrack](https://github.com/ros-drivers/mocap_optitrack) (`foxy-devel` branch).
 
 | `msg_type` | Topic | Type |
 |---|---|---|
@@ -26,7 +26,7 @@ Topics published by [mocap_optitrack](https://github.com/ros-drivers/mocap_optit
 |---|---|---|
 | `<name>/distance` | `std_msgs/Float64` | Cumulative path length [m] |
 | `<name>/displacement` | `std_msgs/Float64` | Distance from the start point [m] |
-| `<name>/path` | `nav_msgs/Path` | Travelled path (latched) |
+| `<name>/path` | `nav_msgs/Path` | Travelled path (transient local) |
 | `/mocap_distance_viz/markers` | `visualization_msgs/MarkerArray` | RViz markers |
 | `/mocap_distance_viz/reset` | `std_srvs/Trigger` | Reset all measurements |
 
@@ -76,25 +76,23 @@ Set in `config/distance_viz.yaml`.
 ## Usage
 
 ```bash
-cd ~/catkin_ws/src
-git clone https://github.com/Leeseunghun03/mocap_distance_viz.git
-cd ~/catkin_ws && catkin_make && source devel/setup.bash
+cd ~/ros2_ws/src
+git clone -b humble https://github.com/Leeseunghun03/mocap_distance_viz.git
+cd ~/ros2_ws && colcon build --packages-select mocap_distance_viz && source install/setup.bash
 
-roslaunch mocap_optitrack mocap.launch
-roslaunch mocap_distance_viz distance_viz.launch
+ros2 launch mocap_optitrack mocap.launch.py
+ros2 launch mocap_distance_viz distance_viz.launch.py
 ```
 
 | Launch argument | Default | Description |
 |---|---|---|
 | `config` | `config/distance_viz.yaml` | Parameter file |
-| `rviz` | `false` | Start RViz |
+| `rviz` | `false` | Start RViz2 |
 | `fake` | `false` | Publish simulated mocap data |
 
 ```bash
-rosservice call /mocap_distance_viz/reset
+ros2 service call /mocap_distance_viz/reset std_srvs/srv/Trigger
 ```
-
-Start the nodes with `rosrun` or `roslaunch`. The files in `scripts/` are not executable on their own.
 
 ### Multiple rigid bodies
 
@@ -104,5 +102,5 @@ The RViz config shows the path of `Robot_1` only. For other bodies, add a Path d
 ## Tests
 
 ```bash
-catkin_make run_tests && catkin_test_results build/test_results
+python3 -m pytest test
 ```
